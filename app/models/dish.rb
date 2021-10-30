@@ -1,7 +1,8 @@
 class Dish < ApplicationRecord
   belongs_to :restaurant
-  has_many :tags, through: :dish_tags
+  has_many :tags, through: :dish_tags, dependent: :destroy
 
   validates :name, :restaurant, presence: {message: "must be present"}
-  validates :tag, uniqueness: {message: "already used"}
+  # this should be in dishtag**
+  # validates :dish_tags, uniqueness: {message: "already used"}
 end
